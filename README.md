@@ -1,0 +1,1 @@
+- ### This is a very simple Madlibs app. The user enters various words into the prompts, submits the form, and then the story is displayed to them.
