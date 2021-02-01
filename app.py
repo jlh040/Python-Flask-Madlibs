@@ -1,3 +1,7 @@
+"""Define two routes, one to input the answers for the story
+and the other to actually show the story.
+"""
+
 from flask import Flask, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from stories import story
@@ -9,14 +13,16 @@ debug = DebugToolbarExtension(app)
 
 @app.route('/home')
 def show_form():
-    ans = {'place': 'london', 'noun': 'Bird', 'verb': 'jump', 'adjective': 'funny',
-     'plural_noun': 'cars'}
+    """Get the list of prompts and render the homepage."""    
     our_prompts = story.prompts
 
     return render_template('home.html', our_prompts = our_prompts)
 
 @app.route('/story')
 def show_story():
+    """Make a dictionary where the keys are the prompts and the 
+    values are the answers for the prompts.
+    """
     answer = {}
     for prompt in story.prompts:
         answer[prompt] = request.args[prompt]
