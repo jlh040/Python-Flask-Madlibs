@@ -24,6 +24,6 @@ def show_story():
     values are the answers for the prompts.
     """
     answer = {}
-    for prompt in story.prompts:
-        answer[prompt] = request.args[prompt]
+    for key in request.args:
+        answer[key] = request.args[key]
     return render_template('story.html', story = story.generate(answer))
